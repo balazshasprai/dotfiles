@@ -1,0 +1,4 @@
+.gitignore
+fzf-tab
+zsh-completions
+zsh-autosuggestions
