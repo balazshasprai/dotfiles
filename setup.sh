@@ -8,7 +8,6 @@ cp -f ${_pwd}/zsh/.oh-my-zsh-themes.gitignore ${_pwd}/zsh/.oh-my-zsh/themes/.git
 stow zsh
 stow nvim
 stow tmux
-#stow sway
 
 # Helper function for safe linking
 safe_link() {
