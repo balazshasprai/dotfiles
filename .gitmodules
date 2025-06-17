@@ -1,0 +1,9 @@
+[submodule "tmux/.tmux/plugins/tmux"]
+	path = tmux/.tmux/plugins/tmux
+	url = https://git::@github.com/dracula/tmux
+[submodule "tmux/.tmux/plugins/tpm"]
+	path = tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "zsh/.oh-my-zsh"]
+	path = zsh/.oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
