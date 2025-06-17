@@ -71,7 +71,19 @@ ZSH_THEME="dracula"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf fzf-tab vscode helm kubectl kubectx zsh-autosuggestions kube-ps1 zsh-completions)
+plugins=(
+  git
+  fzf
+  fzf-tab
+  vscode
+  helm
+  kubectl
+  kubectx
+  zsh-autosuggestions
+  zsh-completions
+  kube-ps1
+  tmux
+)
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 autoload -U compinit && compinit
@@ -83,15 +95,20 @@ source $ZSH/oh-my-zsh.sh
 source <(kubectl completion zsh)
 source <(omnictl completion zsh)
 source <(influx completion zsh)
+eval "$(zoxide init zsh)"
 
 export DRACULA_DISPLAY_NEW_LINE=1
 
 alias bao="openbao"
+alias v="nvim"
+alias vv="nvim ."
+alias lg="lazygit"
+
+
+
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-alias v="nvim"
-alias vv="nvim ."
