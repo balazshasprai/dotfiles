@@ -94,10 +94,13 @@ source $ZSH/oh-my-zsh.sh
 
 source <(kubectl completion zsh)
 source <(omnictl completion zsh)
+source <(talosctl completion zsh)
 source <(influx completion zsh)
+source <(glab completion -s zsh); compdef _glab glab
 eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
 
-export DRACULA_DISPLAY_NEW_LINE=1
+# export DRACULA_DISPLAY_NEW_LINE=1
 
 alias bao="openbao"
 alias v="nvim"
@@ -106,7 +109,7 @@ alias lg="lazygit"
 
 
 
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$HOME/go/bin:$HOME/.cargo/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
