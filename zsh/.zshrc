@@ -92,22 +92,24 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-source <(kubectl completion zsh)
-source <(omnictl completion zsh)
-source <(talosctl completion zsh)
-source <(influx completion zsh)
-source <(glab completion -s zsh); compdef _glab glab
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
+# Load completions only if the command exists
+(( $+commands[kubectl] )) && source <(kubectl completion zsh)
+(( $+commands[omnictl] )) && source <(omnictl completion zsh)
+(( $+commands[talosctl] )) && source <(talosctl completion zsh)
+(( $+commands[influx] )) && source <(influx completion zsh)
+if (( $+commands[glab] )); then
+  source <(glab completion -s zsh)
+  compdef _glab glab
+fi
 
-# export DRACULA_DISPLAY_NEW_LINE=1
+# zoxide and starship initialization if available
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
+(( $+commands[starship] )) && eval "$(starship init zsh)"
 
 alias bao="openbao"
 alias v="nvim"
 alias vv="nvim ."
 alias lg="lazygit"
-
-
 
 export PATH="$HOME/go/bin:$HOME/.cargo/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
@@ -115,3 +117,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Set SSH_AUTH_SOCK only if not already set
+[[ -z "$SSH_AUTH_SOCK" ]] && export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
