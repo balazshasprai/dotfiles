@@ -110,6 +110,10 @@ alias bao="openbao"
 alias v="nvim"
 alias vv="nvim ."
 alias lg="lazygit"
+alias cd="z"
+alias l="eza -l"
+alias ls="eza"
+alias ll="eza -l"
 
 export PATH="$HOME/go/bin:$HOME/.cargo/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
