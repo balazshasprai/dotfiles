@@ -33,3 +33,21 @@ vim.keymap.set('n', '<c->l', ':wincmd l<CR>')
 vim.keymap.set('n', '<C-\\>', '<Cmd>execute v:count . "ToggleTerm"<CR>', { desc = 'Toggle terminal' })
 vim.keymap.set('t', '<C-\\>', '<Cmd>execute v:count . "ToggleTerm"<CR>', { desc = 'Toggle terminal' })
 
+-- vim.filetype.add({
+--   extension = {
+--     foo = "python",   -- all *.foo files will be treated as Python
+--     tpl = "gotexttmpl", -- *.tpl as Go text templates
+--     hcl = "hcl",      -- *.hcl as HashiCorp config
+--   },
+-- })
+
+vim.filetype.add({
+  filename = {
+    ["values.yaml"] = "helm",
+  },
+  pattern = {
+    ["*/templates/*.yaml"] = "helm",
+    ["*/templates/*.tpl"]  = "helm",
+    ["*/charts/*/templates/*.yaml"] = "helm",
+  },
+})
