@@ -123,3 +123,10 @@ export NVM_DIR="$HOME/.nvm"
 
 # Set SSH_AUTH_SOCK only if not already set
 [[ -z "$SSH_AUTH_SOCK" ]] && export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
+
+# Load everything in ~/.zshrc.d
+if [[ -d "$HOME/.zshrc.d" ]]; then
+  for f in "$HOME/.zshrc.d"/*.zsh; do
+    [[ -r "$f" ]] && source "$f"
+  done
+fi
