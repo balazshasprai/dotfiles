@@ -62,7 +62,7 @@ return {
             hover = true,
             schemas = {
               kubernetes = "*.yaml",
-              ["https://json.schemastore.org/gitlab-ci.json"] = "/.gitlab-ci.yml",
+              -- ["https://json.schemastore.org/gitlab-ci.json"] = "/.gitlab-ci.yml",
               ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
               ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
               ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = "azure-pipelines*.{yml,yaml}",
