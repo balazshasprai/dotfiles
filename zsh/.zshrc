@@ -103,7 +103,10 @@ if (( $+commands[glab] )); then
 fi
 
 # zoxide and starship initialization if available
-(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh)"
+  alias cd="z"
+fi
 (( $+commands[starship] )) && eval "$(starship init zsh)"
 
 alias bao="openbao"
@@ -111,9 +114,11 @@ alias v="nvim"
 alias vv="nvim ."
 alias lg="lazygit"
 alias cd="z"
-alias l="eza -l"
-alias ls="eza"
-alias ll="eza -l"
+if (( $+commands[eza] )); then
+  alias l="eza -l"
+  alias ls="eza"
+  alias ll="eza -l"
+fi
 
 export PATH="$HOME/go/bin:$HOME/.cargo/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
