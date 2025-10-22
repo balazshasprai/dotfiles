@@ -94,6 +94,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Load completions only if the command exists
 (( $+commands[kubectl] )) && source <(kubectl completion zsh)
+(( $+commands[kubecolor] )) && compdef kubecolor=kubectl
+(( $+commands[kubebuilder] )) && source <(kubebuilder completion zsh)
 (( $+commands[omnictl] )) && source <(omnictl completion zsh)
 (( $+commands[talosctl] )) && source <(talosctl completion zsh)
 (( $+commands[influx] )) && source <(influx completion zsh)
