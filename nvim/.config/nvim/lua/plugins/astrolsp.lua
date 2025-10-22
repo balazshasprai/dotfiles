@@ -53,6 +53,9 @@ return {
             },
           },
           yaml = {
+            format = {
+              enabled = true
+            },
             schemaStore = {
               enable = true,
               url = "https://www.schemastore.org/api/json/catalog.json",
