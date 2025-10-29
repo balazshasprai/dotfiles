@@ -49,5 +49,8 @@ vim.filetype.add({
     ["*/templates/*.yaml"] = "helm",
     ["*/templates/*.tpl"]  = "helm",
     ["*/charts/*/templates/*.yaml"] = "helm",
+    ["*/*.Jenkinsfile"] = "groovy",
   },
 })
+
+-- vim.cmd("command! JenkinsLint lua require('jenkinsfile_linter').validate()")
