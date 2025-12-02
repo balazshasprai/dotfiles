@@ -137,3 +137,6 @@ if [[ -d "$HOME/.zshrc.d" ]]; then
     [[ -r "$f" ]] && source "$f"
   done
 fi
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/tofu tofu
