@@ -110,12 +110,14 @@ if (( $+commands[zoxide] )); then
   alias cd="z"
 fi
 (( $+commands[starship] )) && eval "$(starship init zsh)"
+(( $+commands[lazygit] )) && alias lg="lazygit"
+(( $+commands[openbao] )) && alias bao="openbao"
 
-alias bao="openbao"
-alias v="nvim"
-alias vv="nvim ."
-alias lg="lazygit"
-alias cd="z"
+if (( $+commands[eza] )); then
+  alias v="nvim"
+  alias vv="nvim ."
+fi
+
 if (( $+commands[eza] )); then
   alias l="eza -l"
   alias ls="eza"
@@ -139,4 +141,4 @@ if [[ -d "$HOME/.zshrc.d" ]]; then
 fi
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/tofu tofu
+(( $+commands[influx] )) && complete -o nospace -C /usr/bin/tofu tofu
