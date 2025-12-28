@@ -1,0 +1,35 @@
+# Framework Laptop 13 + dual-monitor dock setup
+
+# --- MOBILE MODE ---
+profile mobile {
+    output eDP-1 enable mode 2880x1920@120Hz scale 2 position 0,0
+}
+
+# --- DOCKED MODE ---
+profile docked-home {
+    # Lid closed — disable laptop display
+    output eDP-1 disable
+
+    # Top display (LG UltraWide)
+    output "LG Electronics LG ULTRAWIDE 0x000569C0" mode 2560x1080@60Hz position 440,0 scale 1 adaptive_sync off
+
+    # Bottom display (LG UltraGear)
+    output "LG Electronics LG ULTRAGEAR 211NTAB3W592" mode 3440x1440@143.923Hz position 0,1080 scale 1 adaptive_sync on
+}
+
+# --- DOCKED + LID OPEN (Vertical Stack) ---
+profile docked-home-open {
+    # Top display (LG UltraWide)
+    # Position: Centered (440) at the very top (0)
+    output "LG Electronics LG ULTRAWIDE 0x000569C0" mode 2560x1080@60Hz position 440,0 scale 1 adaptive_sync off
+
+    # Middle display (LG UltraGear)
+    # Position: Left edge (0) below the UltraWide (1080)
+    output "LG Electronics LG ULTRAGEAR 211NTAB3W592" mode 3440x1440@143.923Hz position 0,1080 scale 1 adaptive_sync on
+
+    # Bottom display (Framework Laptop)
+    # Position: Centered (1000) below the UltraGear (1080 + 1440 = 2520)
+    # Note: Using scale 2 means logical width is 1440.
+    output eDP-1 enable mode 2880x1920@120Hz scale 2 position 1000,2520
+}
+
