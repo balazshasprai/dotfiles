@@ -1,0 +1,25 @@
+[488cf3c0-88a9-41c3-931b-837cef08aab4]
+Description=Window settings for org.kde.spectacle
+adaptivesync=false
+adaptivesyncrule=2
+title=Spectacle
+types=1
+wmclass=spectacle org.kde.spectacle
+wmclasscomplete=true
+wmclassmatch=1
+
+[87429052-aff7-46e3-8276-c71429338e4f]
+Description=Window settings for com.github.iwalton3.jellyfin-media-player
+adaptivesync=false
+adaptivesyncrule=2
+tearing=false
+tearingrule=2
+title=Jellyfin Media Player
+types=1
+wmclass=\scom.github.iwalton3.jellyfin-media-player
+wmclasscomplete=true
+wmclassmatch=1
+
+[General]
+count=2
+rules=488cf3c0-88a9-41c3-931b-837cef08aab4,87429052-aff7-46e3-8276-c71429338e4f
