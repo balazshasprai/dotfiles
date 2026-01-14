@@ -140,5 +140,9 @@ if [[ -d "$HOME/.zshrc.d" ]]; then
   done
 fi
 
+if [[ -d "/home/linuxbrew/.linuxbrew/bin" ]]; then
+export PATH="/home/linuxbrew/.linuxbrew/bin:$HOME/go/bin:$HOME/.cargo/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+fi
+
 autoload -U +X bashcompinit && bashcompinit
 (( $+commands[influx] )) && complete -o nospace -C /usr/bin/tofu tofu
