@@ -99,6 +99,8 @@ source $ZSH/oh-my-zsh.sh
 (( $+commands[omnictl] )) && source <(omnictl completion zsh)
 (( $+commands[talosctl] )) && source <(talosctl completion zsh)
 (( $+commands[influx] )) && source <(influx completion zsh)
+(( $+commands[opencode] )) && source <(opencode completion zsh)
+(( $+commands[kubie] )) && source <(kubie generate-completion)
 if (( $+commands[glab] )); then
   source <(glab completion -s zsh)
   compdef _glab glab
