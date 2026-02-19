@@ -96,6 +96,8 @@ source $ZSH/oh-my-zsh.sh
 (( $+commands[kubectl] )) && source <(kubectl completion zsh)
 (( $+commands[kubecolor] )) && compdef kubecolor=kubectl
 (( $+commands[kubebuilder] )) && source <(kubebuilder completion zsh)
+(( $+commands[kubectx])) && alias kctx="kubectx"
+(( $+commands[kubens])) && alias kns="kubens"
 (( $+commands[omnictl] )) && source <(omnictl completion zsh)
 (( $+commands[talosctl] )) && source <(talosctl completion zsh)
 (( $+commands[influx] )) && source <(influx completion zsh)
