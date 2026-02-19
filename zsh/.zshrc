@@ -101,6 +101,8 @@ source $ZSH/oh-my-zsh.sh
 (( $+commands[influx] )) && source <(influx completion zsh)
 (( $+commands[opencode] )) && source <(opencode completion zsh)
 (( $+commands[kubie] )) && source <(kubie generate-completion)
+(( $+commands[uv])) && eval "$(uv generate-shell-completion zsh)"
+(( $+commands[uvx])) && eval "$(uvx --generate-shell-completion zsh)"
 if (( $+commands[glab] )); then
   source <(glab completion -s zsh)
   compdef _glab glab
