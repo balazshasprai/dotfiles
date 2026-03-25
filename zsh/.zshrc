@@ -131,7 +131,7 @@ if (( $+commands[eza] )); then
   alias ll="eza -l"
 fi
 
-export PATH="$HOME/go/bin:$HOME/.cargo/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$HOME/.opencode/bin:$HOME/go/bin:$HOME/.cargo/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 [ -s "$HOME/.nvm" ] && export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -153,3 +153,4 @@ fi
 
 autoload -U +X bashcompinit && bashcompinit
 (( $+commands[influx] )) && complete -o nospace -C /usr/bin/tofu tofu
+
