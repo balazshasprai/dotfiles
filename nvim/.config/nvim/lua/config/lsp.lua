@@ -1,6 +1,6 @@
 local lspconfig = require('lspconfig')
 
-lspconfig.yamlls.setup{
+lspconfig.yamlls.setup {
   settings = {
     redhat = {
       telemetry = {
@@ -35,4 +35,3 @@ lspconfig.yamlls.setup{
     },
   },
 }
-
