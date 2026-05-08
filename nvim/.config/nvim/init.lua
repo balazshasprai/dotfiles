@@ -4,10 +4,13 @@ local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
   -- stylua: ignore
-  local result = vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+  local result = vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", lazypath })
   if vim.v.shell_error ~= 0 then
     -- stylua: ignore
-    vim.api.nvim_echo({ { ("Error cloning lazy.nvim:\n%s\n"):format(result), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
+    vim.api.nvim_echo(
+      { { ("Error cloning lazy.nvim:\n%s\n"):format(result), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } },
+      true, {})
     vim.fn.getchar()
     vim.cmd.quit()
   end
@@ -18,10 +21,35 @@ vim.opt.rtp:prepend(lazypath)
 -- validate that lazy is available
 if not pcall(require, "lazy") then
   -- stylua: ignore
-  vim.api.nvim_echo({ { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
+  vim.api.nvim_echo(
+    { { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } },
+    true, {})
   vim.fn.getchar()
   vim.cmd.quit()
 end
 
 require "lazy_setup"
 require "polish"
+
+vim.cmd [[colorscheme dracula]]
+
+vim.keymap.set('n', '<C-\\>', '<Cmd>execute v:count . "ToggleTerm"<CR>', { desc = 'Toggle terminal' })
+vim.keymap.set('t', '<C-\\>', '<Cmd>execute v:count . "ToggleTerm"<CR>', { desc = 'Toggle terminal' })
+
+vim.filetype.add({
+  filename = {
+    ["values.yaml"] = "helm",
+  },
+  pattern = {
+    ["*/templates/*.yaml"]          = "helm",
+    ["*/templates/*.tpl"]           = "helm",
+    ["*/charts/*/templates/*.yaml"] = "helm",
+  },
+})
+
+-- move lines
+vim.keymap.set("n", "<M-k>", ":m .-2<CR>==", { desc = "Move line up" })
+vim.keymap.set("n", "<M-j>", ":m .+1<CR>==", { desc = "Move line down" })
+
+vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
