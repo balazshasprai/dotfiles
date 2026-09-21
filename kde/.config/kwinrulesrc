@@ -1,3 +1,12 @@
+[30309279-49d0-4ff3-a95b-e36b5c004a4e]
+Description=Application settings for firefox
+adaptivesync=false
+adaptivesyncrule=2
+tearing=false
+tearingrule=2
+wmclass=firefox
+wmclassmatch=1
+
 [488cf3c0-88a9-41c3-931b-837cef08aab4]
 Description=Window settings for org.kde.spectacle
 adaptivesync=false
@@ -21,5 +30,17 @@ wmclasscomplete=true
 wmclassmatch=1
 
 [General]
-count=2
-rules=488cf3c0-88a9-41c3-931b-837cef08aab4,87429052-aff7-46e3-8276-c71429338e4f
+count=4
+rules=a148f86b-a483-4d30-9143-4ff4217e1723,30309279-49d0-4ff3-a95b-e36b5c004a4e,488cf3c0-88a9-41c3-931b-837cef08aab4,87429052-aff7-46e3-8276-c71429338e4f
+
+[a148f86b-a483-4d30-9143-4ff4217e1723]
+Description=Window settings for mpv
+adaptivesync=false
+adaptivesyncrule=2
+tearing=false
+tearingrule=2
+title=Family Guy - s24e15 - High School History - mpv
+types=1
+wmclass=python3.13 mpv
+wmclasscomplete=true
+wmclassmatch=1
