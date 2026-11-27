@@ -1,0 +1,159 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "dracula",
+  // "model": "opencode/glm-5",
+  "model": "local/Qwen3.8-27B-UD-Q4_K_XL",
+  // LiteLLM on ovh (https://llm.blzs.io): OpenCode Go as go/<model>, plus "small"
+  // (A2000).
+  "provider": {
+    "opencode": {
+      "models": {
+        "glm-5": {
+          "name": "GLM-5 (Architect)",
+          "tool_call": true
+        },
+        "kimi-k2.5": {
+          "name": "Kimi K2.5 (Refactor)",
+          "tool_call": true
+        },
+        "minimax-m2.5": {
+          "name": "MiniMax (Boilerplate)",
+          "tool_call": true
+        }
+      }
+    },
+    "local": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "llama.cpp (local)",
+      "options": {
+        "baseURL": "http://127.0.0.1:8080/v1",
+        "apiKey": "{env:LLM_API_KEY}"
+      },
+      "models": {
+        "Qwen3.8-27B-UD-Q4_K_XL": {
+          "name": "Qwen3.8 27B (local, dense)",
+          "tool_call": true,
+          "limit": { "context": 65536, "output": 16384 }
+        },
+        "Qwen3.6-27B-IQ4_XS": {
+          "name": "Qwen3.6 27B (local, dense)",
+          "tool_call": true,
+          "limit": { "context": 65536, "output": 16384 }
+        },
+        "Qwen3.6-35B-A3B-UD-IQ4_XS": {
+          "name": "Qwen3.6 35B-A3B (local, MoE)",
+          "tool_call": true,
+          "limit": { "context": 65536, "output": 16384 }
+        }
+      }
+    },
+    "litellm": {
+      "name": "LiteLLM",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://llm.blzs.io/v1"
+      },
+      // Keys must match LiteLLM's model_name (apps/ovh/litellm/06-litellm.yaml).
+      // Limits and image input from Go's model list
+      // (https://opencode.ai/inference/go/v1/models).
+      "models": {
+        // A2000 on bcc (qwen3.5:9b), free
+        "small": {
+          "name": "Small (A2000)",
+          "tool_call": true,
+          "modalities": { "input": ["text"], "output": ["text"] },
+          "limit": { "context": 32768, "output": 8192 }
+        },
+        // llama-server on the desktop (RX 7900 XTX) through LiteLLM; works from
+        // any machine. LiteLLM falls back to go/kimi-k2.7-code when the desktop
+        // is off. At the desktop itself the "local" provider is faster.
+        "desktop/qwen3.6-35b-a3b": {
+          "name": "Desktop: Qwen3.6 35B-A3B (falls back to Go Kimi)",
+          "tool_call": true,
+          "modalities": { "input": ["text"], "output": ["text"] },
+          "limit": { "context": 65536, "output": 16384 }
+        },
+        // Zen pay-as-you-go glm-5.3-flash (fallback for "small")
+        "small-cloud": {
+          "name": "Small Cloud (Zen pay-as-you-go)",
+          "tool_call": true,
+          "modalities": { "input": ["text"], "output": ["text"] },
+          "limit": { "context": 1000000, "output": 131072 }
+        },
+        // OpenCode Go subscription
+        "go/kimi-k2.7-code": {
+          "name": "Go: Kimi K2.7 Code",
+          "tool_call": true,
+          "modalities": { "input": ["text", "image"], "output": ["text"] },
+          "limit": { "context": 262144, "output": 262144 }
+        },
+        "go/glm-5.3": {
+          "name": "Go: GLM-5.3",
+          "tool_call": true,
+          "modalities": { "input": ["text"], "output": ["text"] },
+          "limit": { "context": 1000000, "output": 131072 }
+        },
+        "go/minimax-m3": {
+          "name": "Go: MiniMax M3",
+          "tool_call": true,
+          "modalities": { "input": ["text", "image"], "output": ["text"] },
+          "limit": { "context": 1000000, "output": 131072 }
+        },
+        "go/minimax-m3.1-flash": {
+          "name": "Go: MiniMax M3.1 Flash",
+          "tool_call": true,
+          "modalities": { "input": ["text", "image"], "output": ["text"] },
+          "limit": { "context": 1000000, "output": 512000 }
+        },
+        "go/qwen4-max": {
+          "name": "Go: Qwen4 Max",
+          "tool_call": true,
+          "modalities": { "input": ["text", "image"], "output": ["text"] },
+          "limit": { "context": 1000000, "output": 262144 }
+        },
+        "go/kimi-k3.1-pro": {
+          "name": "Go: Kimi K3.1 Pro",
+          "tool_call": true,
+          "modalities": { "input": ["text", "image"], "output": ["text"] },
+          "limit": { "context": 1048576, "output": 131072 }
+        },
+        "go/kimi-k3": {
+          "name": "Go: Kimi K3",
+          "tool_call": true,
+          "modalities": { "input": ["text", "image"], "output": ["text"] },
+          "limit": { "context": 1048576, "output": 131072 }
+        },
+        "go/gemini-4-argon": {
+          "name": "Go: Gemini 4 Argon",
+          "tool_call": true,
+          "modalities": { "input": ["text", "image", "pdf"], "output": ["text"] },
+          "limit": { "context": 1048576, "output": 65536 }
+        },
+        "go/claude-haiku-5-5": {
+          "name": "Go: Claude Haiku 5.5",
+          "tool_call": true,
+          "modalities": { "input": ["text", "image", "pdf"], "output": ["text"] },
+          "limit": { "context": 1000000, "output": 128000 }
+        },
+        "go/gpt-6-luna": {
+          "name": "Go: GPT-6 Luna",
+          "tool_call": true,
+          "modalities": { "input": ["text", "image", "pdf"], "output": ["text"] },
+          "limit": { "context": 922000, "output": 128000 }
+        },
+        "go/glm-5.3-flash": {
+          "name": "Go: GLM-5.3 Flash",
+          "tool_call": true,
+          "modalities": { "input": ["text", "image"], "output": ["text"] },
+          "limit": { "context": 1000000, "output": 131072 }
+        },
+        "go/qwen3.8-flash": {
+          "name": "Go: Qwen3.8 Flash",
+          "tool_call": true,
+          "modalities": { "input": ["text", "image"], "output": ["text"] },
+          "limit": { "context": 1000000, "output": 131072 }
+        }
+      }
+    }
+  }
+}

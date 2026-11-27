@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 (( $+commands[omnictl] )) && source <(omnictl completion zsh)
 (( $+commands[talosctl] )) && source <(talosctl completion zsh)
 (( $+commands[influx] )) && source <(influx completion zsh)
-(( $+commands[opencode] )) && source <(opencode completion zsh)
+(( $+commands[opencode] )) && source <(opencode --completions zsh)
 (( $+commands[kubie] )) && source <(kubie generate-completion)
 (( $+commands[uv])) && eval "$(uv generate-shell-completion zsh)"
 (( $+commands[uvx])) && eval "$(uvx --generate-shell-completion zsh)"
